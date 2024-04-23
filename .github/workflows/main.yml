@@ -32,9 +32,7 @@ jobs:
           env:
             ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
           run: |
-            for file in ${ALL_CHANGED_FILES}; do
-              echo "$file" | cut -d '/' -f1 | uniq
-            done
+            echo "${ALL_CHANGED_FILES}" | cut -d '/' -f1 | uniq
   
         # - name: Build Docker image
         #   run: docker build -t test-image .
