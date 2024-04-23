@@ -25,7 +25,9 @@ jobs:
             ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
           run: |
             for file in ${ALL_CHANGED_FILES}; do
-              echo "$file" | cut -d '/' -f2 | uniq
+              echo "$file"
+            for file in ${ALL_CHANGED_FILES}; do
+              echo "$file" | cut -d '/' -f1 | uniq
             done
   
         # - name: Build Docker image
