@@ -24,11 +24,9 @@ jobs:
           env:
             ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
           run: |
-            echo "all changed files"
             for file in ${ALL_CHANGED_FILES}; do
               echo "$file"
-
-            echo "all changed folder"
+              
             for file in ${ALL_CHANGED_FILES}; do
               echo "$file" | cut -d '/' -f1 | uniq
             done
