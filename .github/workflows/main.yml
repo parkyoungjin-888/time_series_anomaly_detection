@@ -19,10 +19,9 @@ jobs:
         - name: Extract folder name
           id: extract-folder
           run: |
-            git diff --name-only
-            # CHANGED_FOLDER=$(git diff --name-only | grep '/' | cut -d'/' -f1 | uniq)
-            # echo $CHANGED_FOLDER
-            # echo "::set-output name=folder::$CHANGED_FOLDER"
+            CHANGED_FOLDER=$(git diff --name-only | grep '/' | cut -d'/' -f1 | uniq)
+            echo ${CHANGED_FOLDER}
+          # echo "::set-output name=folder::$CHANGED_FOLDER"
   
         # - name: Build Docker image
         #   run: docker build -t test-image .
