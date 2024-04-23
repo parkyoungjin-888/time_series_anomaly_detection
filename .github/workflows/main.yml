@@ -19,12 +19,13 @@ jobs:
         - name: Extract folder name
           id: extract-folder
           run: |
-            CHANGED_FOLDER=$(git diff --name-only | grep '/' | cut -d'/' -f1 | uniq)
-            echo $CHANGED_FOLDER
-            echo "::set-output name=folder::$CHANGED_FOLDER"
+            git diff --name-only
+            # CHANGED_FOLDER=$(git diff --name-only | grep '/' | cut -d'/' -f1 | uniq)
+            # echo $CHANGED_FOLDER
+            # echo "::set-output name=folder::$CHANGED_FOLDER"
   
-        - name: Build Docker image
-          run: docker build -t test-image .
+        # - name: Build Docker image
+        #   run: docker build -t test-image .
   
         # - name: Log in to Docker Hub
         #   run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
