@@ -16,10 +16,6 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Find changed folder
-          id: get_changed
-          uses: actions/
-
         - name: Extract folder name
           id: extract-folder
           run: |
