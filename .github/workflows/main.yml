@@ -26,8 +26,6 @@ jobs:
           run: |
             for file in ${ALL_CHANGED_FILES}; do
               echo "$file"
-              
-            for file in ${ALL_CHANGED_FILES}; do
               echo "$file" | cut -d '/' -f1 | uniq
             done
   
