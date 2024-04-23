@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '**'
 
 jobs:
   build:
@@ -16,6 +18,12 @@ jobs:
 
         - name: Check file
           run: ls
+
+        - name: Extract folder name
+          id: extract-folder
+          run: |
+            CHANGED_FOLDER=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/' | cut -d'/' -f1 | uniq)
+            echo "::set-output name=folder::$CHANGED_FOLDER"
   
         - name: Build Docker image
           run: docker build -t test-image .

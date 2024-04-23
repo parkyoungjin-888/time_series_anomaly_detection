@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y make curl vim
 WORKDIR /
 
 COPY pyproject.toml .
+RUN ls
 RUN poetry install
 
 CMD [ "bin/bash" ]
