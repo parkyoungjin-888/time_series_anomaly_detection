@@ -16,13 +16,11 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Check file
-          run: ls
-
         - name: Extract folder name
           id: extract-folder
           run: |
             CHANGED_FOLDER=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '/' | cut -d'/' -f1 | uniq)
+            echo $CHANGED_FOLDER
             echo "::set-output name=folder::$CHANGED_FOLDER"
   
         - name: Build Docker image
