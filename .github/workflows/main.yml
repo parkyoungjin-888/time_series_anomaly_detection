@@ -32,7 +32,8 @@ jobs:
           env:
             ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
           run: |
-            echo "${ALL_CHANGED_FILES}" | cut -d '/' -f1 | awk '!seen[$0]++'
+            folders=$(echo "$file_paths" | tr ' ' '\n' | xargs -n1 dirname | sed 's|.*/||' | sort -u)
+            echo "$folders"
   
         # - name: Build Docker image
         #   run: docker build -t test-image .
