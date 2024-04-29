@@ -34,7 +34,6 @@ jobs:
           run: |
             folders=$(echo "$ALL_CHANGED_FILES" | tr ' ' '\n' | cut -d '/' -f1 | sed '/.github/d' | sort -u)
             for file in ${folders}; do
-              echo "$file"
               run: docker build -t {"$file"} ./{"$file"} || true
             done
   
