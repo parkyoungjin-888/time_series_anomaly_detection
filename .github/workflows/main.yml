@@ -28,13 +28,14 @@ jobs:
               echo "$file"
             done
 
-        - name: List all changed folders
+        - name: changed folder docker image build
           env:
             ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
           run: |
             folders=$(echo "$ALL_CHANGED_FILES" | tr ' ' '\n' | cut -d '/' -f1 | sed '/.github/d' | sort -u)
             for file in ${folders}; do
               echo "$file"
+              run: docker build -t {"$file"} ./{"$file"} || true
             done
   
         # - name: Build Docker image
