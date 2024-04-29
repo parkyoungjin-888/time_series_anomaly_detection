@@ -32,7 +32,7 @@ jobs:
           env:
             ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
           run: |
-            folders=$(echo "$ALL_CHANGED_FILES" | tr ' ' '\n' | cut -d '/' -f1 | sed /.github/ | sort -u)
+            folders=$(echo "$ALL_CHANGED_FILES" | tr ' ' '\n' | cut -d '/' -f1 | sed '/.github/' | sort -u)
             for file in ${folders}; do
               echo "$file"
             done
