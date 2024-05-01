@@ -38,7 +38,7 @@ jobs:
               PROJECT_VERSION=$(poetry version --short)
               docker build -t "$PROJECT_FOLDER":"$PROJECT_VERSION" . || true
               if [ $? -eq 0 ]; then
-                BUILDED_IMAGES += ("$PROJECT_FOLDER":"$PROJECT_VERSION")
+                BUILDED_IMAGES += "$PROJECT_FOLDER:$PROJECT_VERSION"
             done
   
         # - name: Log in to Docker Hub
