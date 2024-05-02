@@ -34,8 +34,8 @@ jobs:
           run: |
             folders=$(echo "$ALL_CHANGED_FILES" | tr ' ' '\n' | cut -d '/' -f1 | sed '/.github/d' | sort -u)
             for PROJECT_FOLDER in ${folders}; do
-              cd ./$PROJECT_FOLDER
-              # PROJECT_VERSION=$(poetry version --short)
+              PROJECT_VERSION=$(poetry version --short --file ./$PROJECT_FOLDER/pyproject.toml)
+              echo "$PROJECT_VERSION"
               # docker build -t "$PROJECT_FOLDER":"$PROJECT_VERSION" . || true
               # if [ $? -eq 0 ]; then
               #   BUILDED_IMAGES += "$PROJECT_FOLDER:$PROJECT_VERSION"
