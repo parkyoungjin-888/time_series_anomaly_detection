@@ -35,11 +35,11 @@ jobs:
             folders=$(echo "$ALL_CHANGED_FILES" | tr ' ' '\n' | cut -d '/' -f1 | sed '/.github/d' | sort -u)
             for PROJECT_FOLDER in ${folders}; do
               cd ./$PROJECT_FOLDER
-              PROJECT_VERSION=$(poetry version --short)
-              docker build -t "$PROJECT_FOLDER":"$PROJECT_VERSION" . || true
-              if [ $? -eq 0 ]; then
-                BUILDED_IMAGES += "$PROJECT_FOLDER:$PROJECT_VERSION"
-              cd ..
+              # PROJECT_VERSION=$(poetry version --short)
+              # docker build -t "$PROJECT_FOLDER":"$PROJECT_VERSION" . || true
+              # if [ $? -eq 0 ]; then
+              #   BUILDED_IMAGES += "$PROJECT_FOLDER:$PROJECT_VERSION"
+              # cd ..
             done
   
         # - name: Log in to Docker Hub
